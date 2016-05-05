@@ -12,4 +12,4 @@ gem 'rspec-sinatra'
 group :test do
   gem 'database_cleaner'
 end
-#gem 'rake'
+gem 'rake'
