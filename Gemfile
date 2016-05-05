@@ -8,7 +8,7 @@ gem 'rspec'
 gem 'capybara'
 gem 'sinatra'
 gem 'rspec-sinatra'
-
+gem 'bcrypt'
 group :test do
   gem 'database_cleaner'
 end
