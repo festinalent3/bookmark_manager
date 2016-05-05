@@ -13,6 +13,6 @@ class Link
 end
 
 DataMapper::Logger.new($stdout, :debug)
-DataMapper.setup(:default, "postgres://localhost/bookmark_manager_test" )#ENV['POSTGRES_TEST_ENV'] thats the best way but i dont remember how to do it
+DataMapper.setup(:default, "postgres://localhost/bookmark_manager_#{ENV['RACK_ENV']}")
 DataMapper.finalize
 DataMapper.auto_upgrade!
