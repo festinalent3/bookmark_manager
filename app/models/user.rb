@@ -8,7 +8,7 @@ class User
 
   property :id,     Serial
   property :username,     String
-  property :email, String, format: :email_address, required: true
+  property :email, String, format: :email_address, required: true, unique: true
   property :password_digest, Text
 
   def password=(password)
@@ -17,6 +17,15 @@ class User
   end
 
   validates_confirmation_of :password
+
+  def self.authenticate(email, password)
+    user = first(email: email)
+    if user && BCrypt::Password.new(user.password_digest) == password
+      user
+    else
+      nil
+    end
+  end
 
 
 end
