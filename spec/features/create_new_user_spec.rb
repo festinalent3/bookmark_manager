@@ -7,5 +7,7 @@ feature 'add a new user' do
   end
   scenario 'it does not create a new user if passwords are not matching' do
     expect { sign_up_wrong_passwords }.not_to change(User, :count)
+    expect(current_path).to eq('/user/new')
+    expect(page).to have_content 'Password and confirmation password do not match'
   end
 end
