@@ -10,8 +10,10 @@ feature 'add a new user' do
     expect(current_path).to eq('/user/new')
     expect(page).to have_content 'Password and confirmation password do not match'
   end
-
   scenario "User can't sign up without a valid email address" do
     expect { no_email }.not_to change(User, :count)
+  end
+  scenario 'user can not sign up using an invalid email' do
+    expect { invalid_email }.not_to change(User, :count)
   end
 end
