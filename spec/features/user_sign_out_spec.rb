@@ -1,0 +1,16 @@
+feature 'User signs out' do
+
+  let(:user) do
+    User.create(email: 'user@example.com',
+    password: 'secret1234',
+    password_confirmation: 'secret1234')
+  end
+
+  scenario 'while being signed in' do
+    sign_in_correct(user.email, user.password)
+    click_button 'Sign out'
+    expect(page).to have_content('goodbye!')
+    expect(page).not_to have_content('Welcome, test@test.com')
+  end
+
+end

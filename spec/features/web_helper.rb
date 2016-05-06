@@ -26,6 +26,13 @@ def invalid_email
   click_button 'Create account'
 end
 
+def sign_in_correct(email, password)
+  visit '/sessions/new'
+  fill_in :email, with: email
+  fill_in :password, with: password
+  click_button 'Sign in'
+end
+
 
 def sign_up_wrong_passwords
   visit '/user/new'
